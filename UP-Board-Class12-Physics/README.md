@@ -1,17 +1,36 @@
 # UP Board Class 12 Physics — Syllabus 2026-27 + Model Paper
 
-Two official PDFs from the Uttar Pradesh Madhyamik Shiksha Parishad (**UPMSP**) website
-<https://upmsp.edu.in>, downloaded 21 September 2026. Subject code **151** (भौतिक विज्ञान), संकेतांक **346**.
+Official UPMSP documents, Hindi medium, subject code **151** (भौतिक विज्ञान), संकेतांक **346**.
+Collected 21 September 2026 from <https://upmsp.edu.in>.
+
+```
+Physics-Syllabus-2026-27.pdf     current syllabus, session 2026-27
+question-papers/
+    2019.pdf                     model paper 2019
+    2021-22.pdf                  model paper 2021-22
+    2025-26.pdf                  model paper 2025-26  <- closest to your exam
+    checksums.sha256
+    README.md                    provenance + why only 3 years exist
+```
 
 | File | Session | Source |
 |---|---|---|
 | [**Physics-Syllabus-2026-27.pdf**](Physics-Syllabus-2026-27.pdf) (4 pages) | **2026-27** ✅ | [Board_Syllabus.aspx](https://upmsp.edu.in/Board_Syllabus.aspx) → Class 12 |
-| [**Physics-Model-Paper-2025-26.pdf**](Physics-Model-Paper-2025-26.pdf) (4 pages) | **2025-26** | [Board_ModelPaper.aspx](https://upmsp.edu.in/Board_ModelPaper.aspx) → Class 12 |
+| [**question-papers/**](question-papers/) (3 papers) | 2019, 2021-22, 2025-26 | [Board_ModelPaper.aspx](https://upmsp.edu.in/Board_ModelPaper.aspx) + Internet Archive captures of the official domain |
 
-**About the model paper:** UPMSP has not released a 2026-27 Physics model paper yet. The one here is
-the most recent that exists — it is stamped *प्रतिदर्श प्रश्नपत्र 2025-26*. The unit weightings in it
-still match the 2026-27 syllabus, so it is valid practice. Check the model paper page again later in
-the session for the 2026-27 paper.
+**Two honest caveats about the papers**, both explained in detail in
+[question-papers/README.md](question-papers/README.md):
+
+1. They are **model papers (प्रतिदर्श प्रश्नपत्र), not real exam papers.** UPMSP does not publish the
+   actual board exam question papers anywhere on its site — I verified this across every section of
+   the site, not just assumed it.
+2. Only **3 years** are officially obtainable, not 6. The board overwrites its model paper folder each
+   session, so 2022-23, 2023-24 and 2024-25 Physics papers do not survive on the official domain.
+   I left out the third-party "previous year paper" sites on purpose, since they are unofficial and
+   often memory-based — ask if you want them in a clearly separate folder.
+
+There is also no 2026-27 Physics model paper yet; [2025-26.pdf](question-papers/2025-26.pdf) is the
+newest that exists. Check the model paper page again later in the session.
 
 ---
 
@@ -95,7 +114,7 @@ Four remedial unit tests are held at school level. **These marks do not count to
 
 ---
 
-## Model paper at a glance
+## The 2025-26 paper at a glance
 
 Time **3 hours 15 minutes** (first 15 minutes for reading the paper), max marks **70**.
 It opens with खण्ड-'अ' — six 1-mark MCQs covering electric flux units, specific conductivity units,
@@ -109,11 +128,16 @@ sources with an interference/diffraction comparison.
 
 ## Note on reading the Hindi PDFs
 
-Both PDFs use the legacy Krutidev/Chanakya font encoding. They **display and print perfectly**, but
-if you select and copy text you get gibberish like `“kSf{kd l=&2026&27` instead of `शैक्षिक सत्र 2026-27`.
-Ctrl+F search in Hindi will not work either. That is how the board publishes them — the files here
-are byte-for-byte as downloaded, nothing was altered. Only the filenames were changed to show the
-session (originals: `151-Physics-Class-12.pdf` and `151-Physics.pdf`).
+The syllabus, the 2019 paper and the 2025-26 paper use the legacy Krutidev/Chanakya font encoding.
+They **display and print perfectly**, but if you select and copy text you get gibberish like
+`“kSf{kd l=&2026&27` instead of `शैक्षिक सत्र 2026-27`, and Ctrl+F in Hindi will not work. That is how
+the board publishes them. The 2021-22 paper is the exception — it uses proper Unicode Hindi, so
+copy and search work normally there.
+
+Every file is byte-for-byte as published; nothing was altered. Only filenames were changed, to show
+the session. Originals: `151-Physics-Class-12.pdf` (syllabus), `MODEL_PAPER_2018_19_Inter/151-PHYSICS.pdf`
+(2019), `ModalPaperClass12th_202122/151-PHYSICS_H.pdf` (2021-22), `ModelPaper/class12/151-Physics.pdf`
+(2025-26). Verify any file with `sha256sum -c checksums.sha256` inside `question-papers/`.
 
 ---
 

@@ -26,6 +26,8 @@ CONSTANTS = {
     "&nbsp;·&nbsp; e = 1.6 × 10⁻¹⁹ C &nbsp;·&nbsp; mₑ = 9.1 × 10⁻³¹ kg",
  2: "1/4πε₀ = 9 × 10⁹ N·m²/C² &nbsp;·&nbsp; ε₀ = 8.85 × 10⁻¹² C²/N·m² "
     "&nbsp;·&nbsp; e = 1.6 × 10⁻¹⁹ C &nbsp;·&nbsp; 1 μF = 10⁻⁶ F, 1 pF = 10⁻¹² F",
+ 3: "e = 1.6 × 10⁻¹⁹ C &nbsp;·&nbsp; mₑ = 9.1 × 10⁻³¹ kg &nbsp;·&nbsp; "
+    "ताँबे हेतु n = 8.5 × 10²⁸ प्रति m³ &nbsp;·&nbsp; ρ(ताँबा) = 1.7 × 10⁻⁸ Ω·m",
 }
 
 OWNER, REPO, BRANCH = "singhupavinash8506-arch", "Phusics", "up-board-class12-2026-27"
@@ -46,6 +48,26 @@ CATS = {
 CATBADGE = {1: "सूत्र आधारित", 2: "मान ज्ञात करना", 3: "विविध"}
 
 
+import re as _re
+
+# X_सबस्क्रिप्ट  ->  X<sub>सबस्क्रिप्ट</sub>
+# केवल गद्य क्षेत्रों पर लगाइए; 'formula' कोड ब्लॉक में है, अतः उसे अछूता छोड़ा जाता है।
+_SUB = _re.compile(r'([A-Za-zΑ-Ωα-ω])_([A-Za-z0-9]+|[\u0900-\u097F]+)')
+
+def subs(text):
+    """अधोलेख (subscript) को सही HTML में बदलता है।"""
+    return _SUB.sub(r'\1<sub>\2</sub>', text)
+
+
+def apply_subs(q):
+    """प्रश्न के गद्य क्षेत्रों में अधोलेख लगाइए ('formula' को छोड़कर)।"""
+    q = dict(q)
+    for f in ("q", "ans", "trick", "alt", "why", "topic"):
+        q[f] = subs(q[f])
+    q["steps"] = [(subs(h), subs(b)) for h, b in q["steps"]]
+    return q
+
+
 def load(ch):
     qs = []
     for p in (1, 2, 3):
@@ -53,7 +75,7 @@ def load(ch):
         qs += getattr(mod, f"PART{p}")
     assert len(qs) == 60, f"60 प्रश्न चाहिए, मिले {len(qs)}"
     assert [q["n"] for q in qs] == list(range(1, 61)), "प्रश्न क्रम टूटा है"
-    return qs
+    return [apply_subs(q) for q in qs]
 
 
 def q_card(q, ch):

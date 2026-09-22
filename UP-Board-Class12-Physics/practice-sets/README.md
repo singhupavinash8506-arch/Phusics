@@ -18,7 +18,7 @@
 | 3 | विद्युत धारा | [chapter3.pdf](chapter3.pdf) ✅ | [60 हल](solutions/README.md) |
 | 4 | गतिमान आवेश और चुम्बकत्व | [chapter4.pdf](chapter4.pdf) ✅ | [60 हल](solutions/README.md) |
 | 5 | चुम्बकत्व एवं द्रव्य | [chapter5.pdf](chapter5.pdf) ✅ | [60 हल](solutions/README.md) |
-| 6 | वैद्युतचुम्बकीय प्रेरण | — | — |
+| 6 | वैद्युतचुम्बकीय प्रेरण | [chapter6.pdf](chapter6.pdf) ✅ | [60 हल](solutions/README.md) |
 | 7 | प्रत्यावर्ती धारा | — | — |
 | 8 | वैद्युतचुम्बकीय तरंगें | — | — |
 | 9 | किरण प्रकाशिकी एवं प्रकाशिक यंत्र | — | — |

@@ -31,6 +31,11 @@ CONSTANTS = {
  4: "μ₀ = 4π × 10⁻⁷ T·m/A &nbsp;·&nbsp; μ₀/4π = 10⁻⁷, μ₀/2π = 2 × 10⁻⁷ "
     "&nbsp;·&nbsp; e = 1.6 × 10⁻¹⁹ C &nbsp;·&nbsp; mₑ = 9.1 × 10⁻³¹ kg "
     "&nbsp;·&nbsp; m<sub>p</sub> = 1.67 × 10⁻²⁷ kg",
+ 5: "μ₀ = 4π × 10⁻⁷ T·m/A &nbsp;·&nbsp; μ₀/4π = 10⁻⁷ T·m/A "
+    "&nbsp;·&nbsp; 1 गाउस = 10⁻⁴ टेस्ला &nbsp;·&nbsp; "
+    "tan 30° = 0.577, tan 45° = 1, tan 60° = 1.732",
+ 6: "μ₀ = 4π × 10⁻⁷ T·m/A &nbsp;·&nbsp; 1 वेबर = 1 T·m² "
+    "&nbsp;·&nbsp; 1 हेनरी = 1 वेबर/ऐम्पियर",
 }
 
 OWNER, REPO, BRANCH = "singhupavinash8506-arch", "Phusics", "up-board-class12-2026-27"

@@ -28,6 +28,9 @@ CONSTANTS = {
     "&nbsp;·&nbsp; e = 1.6 × 10⁻¹⁹ C &nbsp;·&nbsp; 1 μF = 10⁻⁶ F, 1 pF = 10⁻¹² F",
  3: "e = 1.6 × 10⁻¹⁹ C &nbsp;·&nbsp; mₑ = 9.1 × 10⁻³¹ kg &nbsp;·&nbsp; "
     "ताँबे हेतु n = 8.5 × 10²⁸ प्रति m³ &nbsp;·&nbsp; ρ(ताँबा) = 1.7 × 10⁻⁸ Ω·m",
+ 4: "μ₀ = 4π × 10⁻⁷ T·m/A &nbsp;·&nbsp; μ₀/4π = 10⁻⁷, μ₀/2π = 2 × 10⁻⁷ "
+    "&nbsp;·&nbsp; e = 1.6 × 10⁻¹⁹ C &nbsp;·&nbsp; mₑ = 9.1 × 10⁻³¹ kg "
+    "&nbsp;·&nbsp; m<sub>p</sub> = 1.67 × 10⁻²⁷ kg",
 }
 
 OWNER, REPO, BRANCH = "singhupavinash8506-arch", "Phusics", "up-board-class12-2026-27"
@@ -68,6 +71,29 @@ def apply_subs(q):
     return q
 
 
+# देवनागरी U+0900-097F है। अन्य किसी भारतीय लिपि का वर्ण गलती से आ जाना
+# फॉन्ट में खाली डिब्बा (tofu) दिखाता है, अतः बिल्ड के समय ही पकड़ा जाता है।
+_OTHER_INDIC = [(0x0980, 0x09FF, "Bengali"), (0x0A00, 0x0A7F, "Gurmukhi"),
+                (0x0A80, 0x0AFF, "Gujarati"), (0x0B00, 0x0B7F, "Oriya"),
+                (0x0B80, 0x0BFF, "Tamil"),    (0x0C00, 0x0C7F, "Telugu"),
+                (0x0C80, 0x0CFF, "Kannada"),  (0x0D00, 0x0D7F, "Malayalam")]
+
+
+def check_script(q, ch):
+    """गलत लिपि के वर्ण मिलने पर बिल्ड रोक दीजिए।"""
+    fields = {f: q[f] for f in ("q", "ans", "trick", "alt", "why", "topic", "formula")}
+    for i, (h, b) in enumerate(q["steps"], 1):
+        fields[f"step{i}-शीर्षक"] = h
+        fields[f"step{i}"] = b
+    for name, text in fields.items():
+        for c in text:
+            for lo, hi, script in _OTHER_INDIC:
+                if lo <= ord(c) <= hi:
+                    raise ValueError(
+                        f"अध्याय {ch} प्रश्न {q['n']} [{name}]: {script} वर्ण "
+                        f"U+{ord(c):04X} ({c!r}) मिला — देवनागरी होना चाहिए")
+
+
 def load(ch):
     qs = []
     for p in (1, 2, 3):
@@ -75,6 +101,8 @@ def load(ch):
         qs += getattr(mod, f"PART{p}")
     assert len(qs) == 60, f"60 प्रश्न चाहिए, मिले {len(qs)}"
     assert [q["n"] for q in qs] == list(range(1, 61)), "प्रश्न क्रम टूटा है"
+    for q in qs:
+        check_script(q, ch)
     return [apply_subs(q) for q in qs]
 
 

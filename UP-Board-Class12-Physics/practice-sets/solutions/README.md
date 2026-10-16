@@ -15,7 +15,7 @@ UP बोर्ड · सत्र 2026-27 · प्रत्येक अध्
 | 9 | किरण प्रकाशिकी एवं प्रकाशिक यंत्र | [सूची देखें](#अध्याय-9--किरण-प्रकाशिकी-एवं-प्रकाशिक-यंत्र) ✅ |
 | 10 | तरंग प्रकाशिकी | [सूची देखें](#अध्याय-10--तरंग-प्रकाशिकी) ✅ |
 | 11 | विकिरण तथा द्रव्य की द्वैत प्रकृति | [सूची देखें](#अध्याय-11--विकिरण-तथा-द्रव्य-की-द्वैत-प्रकृति) ✅ |
-| 12 | परमाणु | — आना शेष |
+| 12 | परमाणु | [सूची देखें](#अध्याय-12--परमाणु) ✅ |
 | 13 | नाभिक | — आना शेष |
 | 14 | अर्धचालक इलेक्ट्रॉनिकी | — आना शेष |
 
@@ -898,6 +898,86 @@ UP बोर्ड · सत्र 2026-27 · प्रत्येक अध्
 | 58 | समान wavelength वाले photon और electron | 5 | [हल देखें](ch11sol58.md) |
 | 59 | ग्राफ, आवृत्ति और तीव्रता का संयुक्त प्रश्न | 5 | [हल देखें](ch11sol59.md) |
 | 60 | Davisson–Germer data की पूर्ण जाँच | 5 | [हल देखें](ch11sol60.md) |
+
+## अध्याय 12 — परमाणु
+
+*Atoms* · प्रश्नपत्र: [chapter12.pdf](../chapter12.pdf)
+
+
+**श्रेणी 1 — सूत्र आधारित प्रश्न**
+
+| प्रश्न | विषय | अंक | हल |
+|---|---|---|---|
+| 1 | हाइड्रोजन की प्रथम Bohr त्रिज्या | 1 | [हल देखें](ch12sol1.md) |
+| 2 | उत्तेजित हाइड्रोजन कक्षा की त्रिज्या | 2 | [हल देखें](ch12sol2.md) |
+| 3 | हाइड्रोजन-सदृश आयन की त्रिज्या | 2 | [हल देखें](ch12sol3.md) |
+| 4 | प्रथम Bohr कक्षा में electron की चाल | 1 | [हल देखें](ch12sol4.md) |
+| 5 | कक्षा संख्या से electron की चाल | 2 | [हल देखें](ch12sol5.md) |
+| 6 | Li²⁺ ion में electron की चाल | 2 | [हल देखें](ch12sol6.md) |
+| 7 | हाइड्रोजन का orbit energy | 1 | [हल देखें](ch12sol7.md) |
+| 8 | He⁺ की energy level | 2 | [हल देखें](ch12sol8.md) |
+| 9 | ground-state ionisation energy | 1 | [हल देखें](ch12sol9.md) |
+| 10 | उत्तेजित अवस्था से ionisation | 2 | [हल देखें](ch12sol10.md) |
+| 11 | ground से excitation energy | 2 | [हल देखें](ch12sol11.md) |
+| 12 | Balmer transition की ऊर्जा और wavelength | 2 | [हल देखें](ch12sol12.md) |
+| 13 | Lyman-alpha line | 2 | [हल देखें](ch12sol13.md) |
+| 14 | Balmer-alpha line | 2 | [हल देखें](ch12sol14.md) |
+| 15 | Paschen-alpha line | 2 | [हल देखें](ch12sol15.md) |
+| 16 | Lyman series limit | 2 | [हल देखें](ch12sol16.md) |
+| 17 | Balmer series limit | 2 | [हल देखें](ch12sol17.md) |
+| 18 | angular-momentum quantisation | 2 | [हल देखें](ch12sol18.md) |
+| 19 | transition energy से photon frequency | 2 | [हल देखें](ch12sol19.md) |
+| 20 | alpha particle की closest approach | 2 | [हल देखें](ch12sol20.md) |
+
+**श्रेणी 2 — मान ज्ञात करना**
+
+| प्रश्न | विषय | अंक | हल |
+|---|---|---|---|
+| 21 | orbit radius से principal quantum number | 2 | [हल देखें](ch12sol21.md) |
+| 22 | He⁺ radius से orbit number | 2 | [हल देखें](ch12sol22.md) |
+| 23 | energy से quantum state | 2 | [हल देखें](ch12sol23.md) |
+| 24 | ionisation energy से initial level | 2 | [हल देखें](ch12sol24.md) |
+| 25 | orbital speed से quantum number | 2 | [हल देखें](ch12sol25.md) |
+| 26 | emission energy से upper level | 3 | [हल देखें](ch12sol26.md) |
+| 27 | Balmer wavelength से upper level | 3 | [हल देखें](ch12sol27.md) |
+| 28 | wave number से spectral level | 3 | [हल देखें](ch12sol28.md) |
+| 29 | series limit से lower level | 3 | [हल देखें](ch12sol29.md) |
+| 30 | closest approach से atomic number | 3 | [हल देखें](ch12sol30.md) |
+| 31 | radius और speed के दो अज्ञात | 3 | [हल देखें](ch12sol31.md) |
+| 32 | He⁺ orbit की radius और energy | 3 | [हल देखें](ch12sol32.md) |
+| 33 | excitation energy और absorption wavelength | 3 | [हल देखें](ch12sol33.md) |
+| 34 | Balmer-beta energy और wavelength | 3 | [हल देखें](ch12sol34.md) |
+| 35 | Balmer-gamma frequency और wavelength | 3 | [हल देखें](ch12sol35.md) |
+| 36 | Balmer series की extreme wavelengths | 3 | [हल देखें](ch12sol36.md) |
+| 37 | Lyman-alpha energy और frequency | 3 | [हल देखें](ch12sol37.md) |
+| 38 | He⁺ transition energy और wavelength | 3 | [हल देखें](ch12sol38.md) |
+| 39 | He⁺ orbit radius और binding energy | 3 | [हल देखें](ch12sol39.md) |
+| 40 | kinetic energy से दो closest approaches | 3 | [हल देखें](ch12sol40.md) |
+
+**श्रेणी 3 — विविध (बोर्ड स्तर, कठिन)**
+
+| प्रश्न | विषय | अंक | हल |
+|---|---|---|---|
+| 41 | रदरफोर्ड alpha-particle scattering experiment | 5 | [हल देखें](ch12sol41.md) |
+| 42 | रदरफोर्ड nuclear model और सीमाएँ | 5 | [हल देखें](ch12sol42.md) |
+| 43 | head-on closest approach का निगमन | 5 | [हल देखें](ch12sol43.md) |
+| 44 | impact parameter और scattering angle | 5 | [हल देखें](ch12sol44.md) |
+| 45 | Bohr postulates और stationary states | 5 | [हल देखें](ch12sol45.md) |
+| 46 | hydrogen-like orbit radius का निगमन | 5 | [हल देखें](ch12sol46.md) |
+| 47 | Bohr speed और angular momentum | 5 | [हल देखें](ch12sol47.md) |
+| 48 | Bohr energy, ionisation और excitation | 5 | [हल देखें](ch12sol48.md) |
+| 49 | Rydberg formula का Bohr derivation | 5 | [हल देखें](ch12sol49.md) |
+| 50 | energy-level diagram और spectral series | 5 | [हल देखें](ch12sol50.md) |
+| 51 | excited hydrogen का photo-ionisation | 5 | [हल देखें](ch12sol51.md) |
+| 52 | Li²⁺ ground-state ionisation threshold | 5 | [हल देखें](ch12sol52.md) |
+| 53 | absorption के बाद excited-state ionisation | 3 | [हल देखें](ch12sol53.md) |
+| 54 | n=4 cascade की extreme wavelengths | 5 | [हल देखें](ch12sol54.md) |
+| 55 | H और He⁺ states की scaling तुलना | 5 | [हल देखें](ch12sol55.md) |
+| 56 | hydrogen-like spectral scaling theorem | 3 | [हल देखें](ch12sol56.md) |
+| 57 | observed hydrogen line की पहचान | 5 | [हल देखें](ch12sol57.md) |
+| 58 | closest approach और 90° impact parameter | 5 | [हल देखें](ch12sol58.md) |
+| 59 | Balmer lines का energy separation | 5 | [हल देखें](ch12sol59.md) |
+| 60 | radius और energy से hydrogen-like ion की पहचान | 5 | [हल देखें](ch12sol60.md) |
 
 ---
 

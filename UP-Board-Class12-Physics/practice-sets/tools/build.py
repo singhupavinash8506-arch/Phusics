@@ -51,6 +51,10 @@ CONSTANTS = {
  11: "h = 6.626 × 10⁻³⁴ J·s &nbsp;·&nbsp; c = 3.00 × 10⁸ m/s &nbsp;·&nbsp; "
      "e = 1.602 × 10⁻¹⁹ C &nbsp;·&nbsp; m<sub>e</sub> = 9.109 × 10⁻³¹ kg &nbsp;·&nbsp; "
      "m<sub>p</sub> = 1.673 × 10⁻²⁷ kg &nbsp;·&nbsp; 1 eV = 1.602 × 10⁻¹⁹ J",
+ 12: "h = 6.626 × 10⁻³⁴ J·s &nbsp;·&nbsp; c = 3.00 × 10⁸ m/s &nbsp;·&nbsp; "
+     "e = 1.602 × 10⁻¹⁹ C &nbsp;·&nbsp; m<sub>e</sub> = 9.109 × 10⁻³¹ kg &nbsp;·&nbsp; "
+     "R<sub>H</sub> = 1.097 × 10⁷ m⁻¹ &nbsp;·&nbsp; a<sub>0</sub> = 5.29 × 10⁻¹¹ m &nbsp;·&nbsp; "
+     "e²/4πε<sub>0</sub> = 1.44 MeV·fm &nbsp;·&nbsp; E<sub>n</sub> = −13.6 Z²/n² eV",
 }
 
 OWNER, REPO, BRANCH = "singhupavinash8506-arch", "Phusics", "up-board-class12-2026-27"

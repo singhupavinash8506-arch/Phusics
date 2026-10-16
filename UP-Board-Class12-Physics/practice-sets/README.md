@@ -20,7 +20,7 @@
 | 5 | चुम्बकत्व एवं द्रव्य | [chapter5.pdf](chapter5.pdf) ✅ | [60 हल](solutions/README.md) |
 | 6 | वैद्युतचुम्बकीय प्रेरण | [chapter6.pdf](chapter6.pdf) ✅ | [60 हल](solutions/README.md) |
 | 7 | प्रत्यावर्ती धारा | [chapter7.pdf](chapter7.pdf) ✅ | [60 हल](solutions/README.md) |
-| 8 | वैद्युतचुम्बकीय तरंगें | — | — |
+| 8 | वैद्युतचुम्बकीय तरंगें | [chapter8.pdf](chapter8.pdf) ✅ | [60 हल](solutions/README.md) |
 | 9 | किरण प्रकाशिकी एवं प्रकाशिक यंत्र | — | — |
 | 10 | तरंग प्रकाशिकी | — | — |
 | 11 | विकिरण तथा द्रव्य की द्वैत प्रकृति | — | — |

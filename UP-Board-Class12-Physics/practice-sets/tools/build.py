@@ -39,6 +39,9 @@ CONSTANTS = {
  7: "π = 3.1416 &nbsp;·&nbsp; √2 = 1.414 &nbsp;·&nbsp; 1 μF = 10⁻⁶ F "
     "&nbsp;·&nbsp; V<sub>rms</sub> = V<sub>m</sub>/√2 "
     "&nbsp;·&nbsp; I<sub>rms</sub> = I<sub>m</sub>/√2 &nbsp;·&nbsp; ω = 2πf",
+ 8: "c = 3.00 × 10⁸ m/s &nbsp;·&nbsp; ε<sub>0</sub> = 8.85 × 10⁻¹² C²/N·m² "
+    "&nbsp;·&nbsp; μ<sub>0</sub> = 4π × 10⁻⁷ T·m/A "
+    "&nbsp;·&nbsp; h = 6.626 × 10⁻³⁴ J·s &nbsp;·&nbsp; e = 1.60 × 10⁻¹⁹ C",
 }
 
 OWNER, REPO, BRANCH = "singhupavinash8506-arch", "Phusics", "up-board-class12-2026-27"

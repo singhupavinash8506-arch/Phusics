@@ -36,6 +36,9 @@ CONSTANTS = {
     "tan 30° = 0.577, tan 45° = 1, tan 60° = 1.732",
  6: "μ₀ = 4π × 10⁻⁷ T·m/A &nbsp;·&nbsp; 1 वेबर = 1 T·m² "
     "&nbsp;·&nbsp; 1 हेनरी = 1 वेबर/ऐम्पियर",
+ 7: "π = 3.1416 &nbsp;·&nbsp; √2 = 1.414 &nbsp;·&nbsp; 1 μF = 10⁻⁶ F "
+    "&nbsp;·&nbsp; V<sub>rms</sub> = V<sub>m</sub>/√2 "
+    "&nbsp;·&nbsp; I<sub>rms</sub> = I<sub>m</sub>/√2 &nbsp;·&nbsp; ω = 2πf",
 }
 
 OWNER, REPO, BRANCH = "singhupavinash8506-arch", "Phusics", "up-board-class12-2026-27"
@@ -148,9 +151,11 @@ def build_html(ch, qs):
 <style>
 @font-face {{ font-family:'Dev'; src:url('file://{FONTS}/DevRegular.ttf'); font-weight:400; }}
 @font-face {{ font-family:'Dev'; src:url('file://{FONTS}/DevBold.ttf');    font-weight:700; }}
+@font-face {{ font-family:'Math'; src:url('file://{FONTS}/DejaVuSans.ttf'); font-weight:400; }}
+@font-face {{ font-family:'Math'; src:url('file://{FONTS}/DejaVuSans-Bold.ttf'); font-weight:700; }}
 @page {{ size:A4; margin:13mm 11mm 16mm 11mm; }}
 * {{ box-sizing:border-box; }}
-body {{ font-family:'Dev','DejaVu Sans',sans-serif; font-size:10pt; line-height:1.6;
+body {{ font-family:'Dev','Math',sans-serif; font-size:10pt; line-height:1.6;
         color:#16182b; margin:0; }}
 .hero {{ background:linear-gradient(135deg,#1e3a8a 0%,#6d28d9 55%,#be185d 100%);
          color:#fff; padding:20px 22px; border-radius:14px; margin-bottom:6px; }}
@@ -216,29 +221,69 @@ body {{ font-family:'Dev','DejaVu Sans',sans-serif; font-size:10pt; line-height:
 </body></html>"""
 
 
+def _add_pdf_footer(pdf_path, ch, name):
+    """मुख्य PDF पर स्थानीय फॉन्ट से सही आकारबद्ध पादलेख लगाइए।"""
+    import pymupdf
+
+    doc = pymupdf.open(pdf_path)
+    archive = pymupdf.Archive(FONTS)
+    common_css = """
+      @font-face { font-family:DevFooter; src:url(DevRegular.ttf); }
+      @font-face { font-family:MathFooter; src:url(DejaVuSans.ttf); }
+      p { margin:0; color:#6b7280; font-family:DevFooter,MathFooter,sans-serif;
+          font-size:7.5pt; line-height:1.15; }
+    """
+    heart_css = """
+      @font-face { font-family:MathFooter; src:url(DejaVuSans.ttf); }
+      p { margin:0; color:#dc2626; font-family:MathFooter,sans-serif;
+          font-size:8pt; font-weight:bold; line-height:1.1; text-align:center; }
+    """
+    mm = 72 / 25.4
+    total = doc.page_count
+    for page_number, page in enumerate(doc, 1):
+        width, height = page.rect.width, page.rect.height
+        y0, y1 = height - 9.5 * mm, height - 4.0 * mm
+        boxes = (
+            ((11 * mm, y0, width * 0.46, y1),
+             f"<p>अध्याय {ch} &middot; {name}</p>", common_css),
+            ((width * 0.46, y0, width * 0.54, y1),
+             "<p>&#10084;</p>", heart_css),
+            ((width * 0.54, y0, width - 11 * mm, y1),
+             f"<p style='text-align:right'>पृष्ठ {page_number} / {total}</p>", common_css),
+        )
+        for rect, html, css in boxes:
+            spare_height, scale = page.insert_htmlbox(
+                rect, html, css=css, archive=archive, scale_low=1
+            )
+            if spare_height < 0 or scale != 1:
+                raise RuntimeError(
+                    f"पृष्ठ {page_number} का पादलेख नहीं समाया: "
+                    f"spare={spare_height}, scale={scale}"
+                )
+    temporary = pdf_path + ".footer.pdf"
+    doc.save(temporary, garbage=4, deflate=True)
+    doc.close()
+    os.replace(temporary, pdf_path)
+
+
 def render_pdf(ch, qs):
     from playwright.sync_api import sync_playwright
     name, _ = CHAPTERS[ch]
     src = f"/projects/sandbox/build/chapter{ch}.html"
+    pdf_path = os.path.join(OUT, f"chapter{ch}.pdf")
     open(src, "w", encoding="utf-8").write(build_html(ch, qs))
-    footer = f"""
-    <div style="width:100%;font-size:7.5pt;color:#6b7280;padding:0 11mm;
-                font-family:'Noto Sans Devanagari','DejaVu Sans',sans-serif;
-                display:flex;justify-content:space-between;">
-      <span>अध्याय {ch} &middot; {name}</span>
-      <span style="color:#dc2626;font-weight:bold;">&#10084;</span>
-      <span>पृष्ठ <span class="pageNumber"></span> / <span class="totalPages"></span></span>
-    </div>"""
+    # Chromium के अलग footer document में देवनागरी फॉन्ट नहीं जुड़ता। पहले
+    # प्रश्न-पृष्ठ बनते हैं, फिर उसी स्थानीय फॉन्ट से पादलेख PDF पर रखा जाता है।
     with sync_playwright() as p:
         b = p.chromium.launch(args=["--no-sandbox"])
         pg = b.new_page()
         pg.goto("file://" + src)
         pg.wait_for_timeout(1500)
-        pg.pdf(path=os.path.join(OUT, f"chapter{ch}.pdf"), format="A4",
-               print_background=True, display_header_footer=True,
-               header_template="<div></div>", footer_template=footer,
+        pg.pdf(path=pdf_path, format="A4", print_background=True,
+               display_header_footer=False,
                margin={"top":"13mm","bottom":"16mm","left":"11mm","right":"11mm"})
         b.close()
+    _add_pdf_footer(pdf_path, ch, name)
 
 
 def build_solution(q, ch):

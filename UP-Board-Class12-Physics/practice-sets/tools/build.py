@@ -45,6 +45,9 @@ CONSTANTS = {
  9: "c = 3.00 × 10⁸ m/s &nbsp;·&nbsp; D = 25 cm &nbsp;·&nbsp; "
     "n = c/v &nbsp;·&nbsp; P = 1/f (f मीटर में) &nbsp;·&nbsp; "
     "sin C = n<sub>विरल</sub>/n<sub>सघन</sub> &nbsp;·&nbsp; 1 D = 1 m⁻¹",
+ 10: "c = 3.00 × 10⁸ m/s &nbsp;·&nbsp; π = 3.1416 &nbsp;·&nbsp; "
+     "1 nm = 10⁻⁹ m &nbsp;·&nbsp; 1 μm = 10⁻⁶ m &nbsp;·&nbsp; 1 mm = 10⁻³ m &nbsp;·&nbsp; "
+     "φ = 2πΔ/λ &nbsp;·&nbsp; β = λD/d",
 }
 
 OWNER, REPO, BRANCH = "singhupavinash8506-arch", "Phusics", "up-board-class12-2026-27"

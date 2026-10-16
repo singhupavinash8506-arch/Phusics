@@ -22,7 +22,7 @@
 | 7 | प्रत्यावर्ती धारा | [chapter7.pdf](chapter7.pdf) ✅ | [60 हल](solutions/README.md) |
 | 8 | वैद्युतचुम्बकीय तरंगें | [chapter8.pdf](chapter8.pdf) ✅ | [60 हल](solutions/README.md) |
 | 9 | किरण प्रकाशिकी एवं प्रकाशिक यंत्र | [chapter9.pdf](chapter9.pdf) ✅ | [60 हल](solutions/README.md) |
-| 10 | तरंग प्रकाशिकी | — | — |
+| 10 | तरंग प्रकाशिकी | [chapter10.pdf](chapter10.pdf) ✅ | [60 हल](solutions/README.md) |
 | 11 | विकिरण तथा द्रव्य की द्वैत प्रकृति | — | — |
 | 12 | परमाणु | — | — |
 | 13 | नाभिक | — | — |

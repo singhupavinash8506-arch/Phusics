@@ -23,7 +23,7 @@
 | 8 | वैद्युतचुम्बकीय तरंगें | [chapter8.pdf](chapter8.pdf) ✅ | [60 हल](solutions/README.md) |
 | 9 | किरण प्रकाशिकी एवं प्रकाशिक यंत्र | [chapter9.pdf](chapter9.pdf) ✅ | [60 हल](solutions/README.md) |
 | 10 | तरंग प्रकाशिकी | [chapter10.pdf](chapter10.pdf) ✅ | [60 हल](solutions/README.md) |
-| 11 | विकिरण तथा द्रव्य की द्वैत प्रकृति | — | — |
+| 11 | विकिरण तथा द्रव्य की द्वैत प्रकृति | [chapter11.pdf](chapter11.pdf) ✅ | [60 हल](solutions/README.md) |
 | 12 | परमाणु | — | — |
 | 13 | नाभिक | — | — |
 | 14 | अर्धचालक इलेक्ट्रॉनिकी | — | — |

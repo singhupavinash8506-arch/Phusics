@@ -48,6 +48,9 @@ CONSTANTS = {
  10: "c = 3.00 × 10⁸ m/s &nbsp;·&nbsp; π = 3.1416 &nbsp;·&nbsp; "
      "1 nm = 10⁻⁹ m &nbsp;·&nbsp; 1 μm = 10⁻⁶ m &nbsp;·&nbsp; 1 mm = 10⁻³ m &nbsp;·&nbsp; "
      "φ = 2πΔ/λ &nbsp;·&nbsp; β = λD/d",
+ 11: "h = 6.626 × 10⁻³⁴ J·s &nbsp;·&nbsp; c = 3.00 × 10⁸ m/s &nbsp;·&nbsp; "
+     "e = 1.602 × 10⁻¹⁹ C &nbsp;·&nbsp; m<sub>e</sub> = 9.109 × 10⁻³¹ kg &nbsp;·&nbsp; "
+     "m<sub>p</sub> = 1.673 × 10⁻²⁷ kg &nbsp;·&nbsp; 1 eV = 1.602 × 10⁻¹⁹ J",
 }
 
 OWNER, REPO, BRANCH = "singhupavinash8506-arch", "Phusics", "up-board-class12-2026-27"

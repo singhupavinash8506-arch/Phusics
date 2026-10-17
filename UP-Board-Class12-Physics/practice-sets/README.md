@@ -26,7 +26,7 @@
 | 11 | विकिरण तथा द्रव्य की द्वैत प्रकृति | [chapter11.pdf](chapter11.pdf) ✅ | [60 हल](solutions/README.md) |
 | 12 | परमाणु | [chapter12.pdf](chapter12.pdf) ✅ | [60 हल](solutions/README.md) |
 | 13 | नाभिक | [chapter13.pdf](chapter13.pdf) ✅ | [60 हल](solutions/README.md) |
-| 14 | अर्धचालक इलेक्ट्रॉनिकी | — | — |
+| 14 | अर्धचालक इलेक्ट्रॉनिकी | [chapter14.pdf](chapter14.pdf) ✅ | [60 हल](solutions/README.md) |
 
 ## हल कैसे खोलें
 

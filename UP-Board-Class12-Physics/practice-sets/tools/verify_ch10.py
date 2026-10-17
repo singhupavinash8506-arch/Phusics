@@ -389,7 +389,12 @@ def verify_generated_artifacts():
     readme = (root / "README.md").read_text(encoding="utf-8")
     expected_row = "| 10 | तरंग प्रकाशिकी | [chapter10.pdf](chapter10.pdf) ✅ | [60 हल](solutions/README.md) |"
     assert expected_row in readme, "main README Chapter 10 row is not published"
-    assert not (root / "chapter11.pdf").exists() and not list(sold.glob("ch11sol*.md")), "Chapter 11 artifact found during Chapter 10-only verification"
+    # पहले यह guard अध्याय 11 की अनुपस्थिति माँगता था (task-isolation)। सभी अध्याय पूर्ण
+    # होने पर अब केवल आंशिक build पकड़ा जाता है।
+    if (root / "chapter11.pdf").exists() or list(sold.glob("ch11sol*.md")):
+        assert (root / "chapter11.pdf").exists(), "Chapter 11 solutions without chapter11.pdf (partial build)"
+        assert not [n for n in range(1, 61) if not (sold / f"ch11sol{n}.md").exists()], \
+            "Chapter 11 आंशिक रूप से बना है"
 
     mutated_solution = build.build_solution(published_questions[0], 10).replace("## ✅ उत्तर", "## उत्तर", 1)
     assert mutated_solution != solution_paths[0].read_text(encoding="utf-8"), "generated-artifact mutation guard failed"

@@ -410,8 +410,15 @@ def verify_generated_artifacts():
     expected_row = "| 9 | किरण प्रकाशिकी एवं प्रकाशिक यंत्र | [chapter9.pdf](chapter9.pdf) ✅ | [60 हल](solutions/README.md) |"
     if expected_row not in readme:
         raise AssertionError("main README Chapter 9 row is not published")
+    # मूल रूप से यह guard "इस task में अध्याय 10 नहीं बनना था" जाँचता था। सभी 14 अध्याय
+    # पूर्ण हो जाने पर वह शर्त अप्रासंगिक है, अतः अब केवल यह देखा जाता है कि पड़ोसी अध्याय
+    # यदि उपस्थित है तो अधूरा न हो — आंशिक/दूषित build इसी से पकड़ा जाता है।
     if (root / "chapter10.pdf").exists() or list(sold.glob("ch10sol*.md")):
-        raise AssertionError("Chapter 10 artifact found during Chapter 9-only verification")
+        if not (root / "chapter10.pdf").exists():
+            raise AssertionError("Chapter 10 solutions exist without chapter10.pdf (partial build)")
+        missing = [n for n in range(1, 61) if not (sold / f"ch10sol{n}.md").exists()]
+        if missing:
+            raise AssertionError(f"Chapter 10 is partially built; missing solutions: {missing}")
     print(f"POST_BUILD_ARTIFACT_BINDING solutions=60/60 pdf_pages={document.page_count} https_annotations=60/60 index=exact")
 
 

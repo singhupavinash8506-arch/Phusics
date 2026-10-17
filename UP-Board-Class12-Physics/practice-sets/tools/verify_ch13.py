@@ -656,7 +656,11 @@ def verify_generated_artifacts():
     all_local_links += len(master_links)
     for target in master_links:
         assert target.exists(), f"master index का टूटा link: {target}"
-    assert len(master_links) == 793, f"13 अध्यायों के master local links 793 चाहिए, मिले {len(master_links)}"
+    # master index प्रत्येक निर्मित अध्याय के लिए 61 local links देता है (60 हल + 1 PDF)।
+    # पहले यह गणना 13 अध्यायों पर स्थिर थी; अब निर्मित अध्यायों से व्युत्पन्न होती है।
+    built_chapters = len(list(PRACTICE.glob("chapter*.pdf")))
+    assert len(master_links) == 61 * built_chapters, \
+        f"{built_chapters} अध्यायों के master local links {61 * built_chapters} चाहिए, मिले {len(master_links)}"
     assert "| 13 | नाभिक |" in master and "## अध्याय 13 — नाभिक" in master
 
     changed = build.build_solution(dict(published[0], ans=published[0]["ans"] + " बदला"), 13)
@@ -731,14 +735,25 @@ def verify_generated_artifacts():
     public_readme = (PRACTICE / "README.md").read_text(encoding="utf-8")
     expected_row = "| 13 | नाभिक | [chapter13.pdf](chapter13.pdf) ✅ | [60 हल](solutions/README.md) |"
     assert expected_row in public_readme, "Chapter 13 README row प्रकाशित नहीं"
-    assert "| 14 | अर्धचालक इलेक्ट्रॉनिकी | — | — |" in public_readme, \
-           "Chapter 14 की पंक्ति अछूती रहनी चाहिए"
-    assert not (PRACTICE / "chapter14.pdf").exists(), "Chapter 14 को इस task में नहीं बनाना था"
-    assert not any(SOLUTIONS.glob("ch14sol*.md")), "Chapter 14 समाधान इस task में नहीं बनने थे"
-    assert not any(ROOT.glob("ch14_part*.py")), "Chapter 14 स्रोत मॉड्यूल इस task में नहीं बनने थे"
+    # पहले अध्याय 14 की पंक्ति placeholder रहनी आवश्यक थी; अब वह बन चुका है, अतः पंक्ति
+    # या placeholder हो या अपना PDF link करती हो — दोनों में से ठीक एक रूप मान्य है।
+    ch14_placeholder = "| 14 | अर्धचालक इलेक्ट्रॉनिकी | — | — |" in public_readme
+    ch14_published = "| 14 | अर्धचालक इलेक्ट्रॉनिकी | [chapter14.pdf](chapter14.pdf) ✅ | [60 हल](solutions/README.md) |" in public_readme
+    assert ch14_placeholder != ch14_published, "Chapter 14 की README पंक्ति का रूप अमान्य है"
+    # पहले यह guard अध्याय 14 की अनुपस्थिति माँगता था (task-isolation)। सभी अध्याय पूर्ण
+    # होने पर अब केवल आंशिक build पकड़ा जाता है।
+    if (PRACTICE / "chapter14.pdf").exists() or any(SOLUTIONS.glob("ch14sol*.md")):
+        assert (PRACTICE / "chapter14.pdf").exists(), "Chapter 14 समाधान बिना chapter14.pdf (आंशिक build)"
+        assert not [n for n in range(1, 61) if not (SOLUTIONS / f"ch14sol{n}.md").exists()], \
+            "Chapter 14 आंशिक रूप से बना है"
+    # अध्याय 14 के स्रोत मॉड्यूल अब वैध रूप से उपस्थित हैं; यदि हों तो तीनों पूर्ण होने चाहिए।
+    ch14_parts = sorted(p.name for p in ROOT.glob("ch14_part*.py"))
+    if ch14_parts:
+        assert ch14_parts == ["ch14_part1.py", "ch14_part2.py", "ch14_part3.py"], \
+            f"Chapter 14 स्रोत मॉड्यूल अपूर्ण: {ch14_parts}"
     print(f"PASS PDF pages={pages}, bytes={pdf_path.stat().st_size}, exact unique HTTPS links=60")
     print("PASS 60 rendered PDF prompts/topics bound; decimal/digit/dataset mutations rejected")
-    print("PASS footers, master index, README publication row, and Chapter 14 absence")
+    print("PASS footers, master index, README publication row, and sibling-build integrity")
 
 
 if "--post-build" in sys.argv:

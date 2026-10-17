@@ -178,6 +178,39 @@ banned = [t for t in ("ट्रांजिस्टर", "transistor", "लॉ
 ok("ch14 stays inside the 2026-27 scope (no transistor/logic gates)", not banned,
    f"found {banned}")
 
+# Board-level guard. These are genuine physics but belong to competitive-exam
+# preparation, not the UP Board Class 12 paper, and were deliberately removed.
+ABOVE_BOARD = [
+    r"\sin^4", "cot", "संघात प्राचल", "impact parameter",      # Rutherford scattering law
+    "फ्रेनेल दूरी", "z_F",                                      # Fresnel distance
+    "विभेदन", "resolving power", "1.22",                        # resolving power
+    "डॉप्लर", "Doppler",                                        # Doppler shift in light
+    "दृश्यता", "visibility",                                    # fringe visibility
+    "अनुपस्थित फ्रिंज", "फ्रॉनहोफर", "द्विप्रिज़्म",              # missing fringes, Fraunhofer, biprism
+    "विकिरण दाब", "radiation pressure",                         # radiation pressure
+    "जीमान", "स्टार्क", "अनिश्चितता",                            # Zeeman, Stark, uncertainty
+    "पृथक्करण ऊर्जा", "S_n",                                     # neutron separation energy
+    "प्रतिक्षेप", "मेसॉन", "यूकावा",                              # alpha recoil, Yukawa meson
+    "तरंगिका गुणांक", "रूप गुणांक", "दिष्टकरण दक्षता",            # ripple/form factor, efficiency
+    "k_BT", "हिमस्खलन", "प्रजनक",                                # diode equation, avalanche, breeder
+    "I_{rms}", "प्रतिकर्षी क्रोड",                               # rms currents, repulsive core
+]
+all_items = "\n".join(i for c in CHAPTERS for s in c["sections"] for i in s["items"])
+above = sorted({t for t in ABOVE_BOARD if t.lower() in all_items.lower()})
+ok("content stays at board level (no competitive-exam material)", not above,
+   f"found {above}")
+
+# ...while the core board formulas must all still be present
+BOARD_CORE = [
+    r"\beta = \frac{\lambda D}{d}", r"I = I_0\cos^2\theta", r"\tan i_p = n",
+    r"h\nu = \phi_0 + K_{max}", r"\lambda = \frac{h}{p}",
+    r"m_e v r = \frac{nh}{2\pi}", r"E_n = -\frac{13.6\,Z^2}{n^2}",
+    r"R = R_0 A^{1/3}", r"E_b = \Delta m \times 931.5", r"T_{1/2} = \frac{\ln 2}{\lambda}",
+    r"n_e n_h = n_i^2", r"V_{dc} = \frac{2V_m}{\pi}", r"E_g = \frac{hc}{\lambda}",
+]
+missing_core = [r for r in BOARD_CORE if r not in all_items]
+ok("all core board formulas retained", not missing_core, f"missing {missing_core}")
+
 # ------------------------------------------------------------ 4. output artefacts
 print("\n=== 4. RENDERED ARTEFACTS ===")
 pdfs = sorted(OUT.glob("chapter*-formula.pdf"))

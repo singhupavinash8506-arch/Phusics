@@ -342,26 +342,26 @@ body {{ font-family:'CMU','Dev','Sym',serif; -webkit-font-smoothing:antialiased;
 /* flow-root contains the floated diagram, so a section's measured height is
    its true height -- otherwise a float leaks into the next section and the
    page-packing budget is computed from wrong numbers. */
-.sec {{ margin-bottom:7.5px; display:flow-root; }}
+.sec {{ margin-bottom:6.2px; display:flow-root; }}
 .sec:last-child {{ margin-bottom:0; }}
-.sh {{ font-weight:700; font-size:13.6px; line-height:1.34; color:#000;
+.sh {{ font-weight:700; font-size:13.2px; line-height:1.32; color:#000;
   margin-bottom:1.5px; white-space:nowrap; }}
 .sh .hi {{ font-family:'Dev','CMU',sans-serif; font-weight:700; }}
 .sh .no {{ font-weight:700; }}
 .sh .cont {{ font-family:'Dev','CMU',sans-serif; font-weight:400; font-size:11px; }}
 
-.it {{ display:flex; align-items:baseline; font-size:12.35px; line-height:1.56;
+.it {{ display:flex; align-items:baseline; font-size:11.9px; line-height:1.48;
   color:#000; padding-left:3px; }}
 .it .mk {{ flex:0 0 11px; text-align:left; }}
 .it .mk.dot {{ font-size:10px; line-height:1.9; }}
 .it .bd {{ flex:1 1 auto; }}
-.it.sub {{ padding-left:20px; font-size:11.95px; }}
+.it.sub {{ padding-left:19px; font-size:11.5px; }}
 .it .hi, .it {{ }}
 .bd {{ font-family:'Dev','CMU',sans-serif; }}
 .bd b {{ font-family:'Dev','CMU',sans-serif; font-weight:700; }}
 
 /* ---------- maths ---------- */
-.m {{ font-family:'CMU','Sym',serif; font-size:13.1px; white-space:nowrap; }}
+.m {{ font-family:'CMU','Sym',serif; font-size:12.6px; white-space:nowrap; }}
 .m i {{ font-style:italic; }}
 .m .op {{ font-style:normal; }}
 .m .upr {{ font-family:'Dev','CMU',sans-serif; font-style:normal; font-size:11.9px; }}
@@ -545,7 +545,7 @@ def sheets_doc(sheets: list[dict], footer: str) -> str:
             f'</head><body>{"".join(boards)}</body></html>')
 
 
-SEC_GAP = 7.5          # must match .sec margin-bottom
+SEC_GAP = 6.2          # must match .sec margin-bottom
 
 
 def flow_pages(sections: list[dict], meas: list[dict], budget: float,

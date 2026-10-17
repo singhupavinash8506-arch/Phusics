@@ -173,6 +173,29 @@ def build() -> int:
                 used += s.getBoundingClientRect().height
                       + parseFloat(getComputedStyle(s).marginBottom||0);
               });
+              // Headings and maths are white-space:nowrap, so unlike ordinary
+              // text they do not reflow around a floated diagram -- they just
+              // run underneath it. Flag any that actually overlap.
+              const clash = [];
+              b.querySelectorAll('.sec').forEach(sec=>{
+                const dg = sec.querySelector('.dg');
+                if (!dg) return;
+                const d = dg.getBoundingClientRect();
+                sec.querySelectorAll('.sh, .m').forEach(el=>{
+                  // A heading is a block, so its own rect spans the full
+                  // content width regardless of how short the text is. Measure
+                  // the inline text boxes via a Range instead.
+                  const rng = document.createRange();
+                  rng.selectNodeContents(el);
+                  for (const r of rng.getClientRects()) {
+                    const vOver = Math.min(r.bottom,d.bottom) - Math.max(r.top,d.top);
+                    if (vOver > 2 && r.right > d.left + 1) {
+                      clash.push(el.textContent.trim().slice(0,42));
+                      break;
+                    }
+                  }
+                });
+              });
               return {
                 page: i+1,
                 inkScroll: ink.scrollHeight, inkClient: ink.clientHeight,
@@ -186,6 +209,7 @@ def build() -> int:
                 titleWrapped: (b.querySelector('.title')
                    .getBoundingClientRect().height > 26),
                 fillPct: Math.round(100*used/fr.height),
+                diagramClash: clash.slice(0,4),
                 // any of these in the *rendered text* means markup escaped
                 rawHtml: (ink.innerText.match(
                    /class=|<span|<\\/|&lt;span|"op"|&amp;lt;|&amp;gt;/g) || [])
@@ -229,6 +253,8 @@ def build() -> int:
                 if r["tallNuc"]:
                     problems.append(f"{tag}: {r['tallNuc']} nuclide prescript(s) "
                                     f"taller than two lines")
+                for c in r["diagramClash"]:
+                    problems.append(f"{tag}: runs into its diagram -> {c!r}")
 
             pdf_path = OUT / f"chapter{ch}-formula.pdf"
             page.emulate_media(media="print")
